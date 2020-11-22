@@ -1,0 +1,28 @@
+{
+  "name": "slp-matchup-reminders",
+  "version": "0.0.1",
+  "description": "Slippi matchup reminders",
+  "main": "index.js",
+  "dependencies": {
+    "@vinceau/slp-realtime": "3.0.4",
+    "rxjs": "^6.5.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshjiang/slp-gameplan-hud.git"
+  },
+  "keywords": [
+    "slippi",
+    "melee"
+  ],
+  "author": "Josh Jiang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshjiang/slp-gameplan-hud/issues"
+  },
+  "homepage": "https://github.com/joshjiang/slp-gameplan-hud#readme",
+  "private": true
+}
