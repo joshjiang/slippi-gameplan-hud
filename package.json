@@ -4,6 +4,7 @@
   "description": "Slippi matchup reminders",
   "main": "index.js",
   "dependencies": {
+    "@slippi/slippi-js": "^5.1.1",
     "@vinceau/slp-realtime": "3.0.4",
     "rxjs": "^6.5.4"
   },
