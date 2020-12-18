@@ -1,29 +1,45 @@
 {
-  "name": "slp-matchup-reminders",
-  "version": "0.0.1",
-  "description": "Slippi matchup reminders",
-  "main": "index.js",
-  "dependencies": {
-    "@slippi/slippi-js": "^5.1.1",
-    "@vinceau/slp-realtime": "3.0.4",
-    "rxjs": "^6.5.4"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/joshjiang/slp-gameplan-hud.git"
-  },
-  "keywords": [
-    "slippi",
-    "melee"
-  ],
-  "author": "Josh Jiang",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/joshjiang/slp-gameplan-hud/issues"
-  },
-  "homepage": "https://github.com/joshjiang/slp-gameplan-hud#readme",
-  "private": true
+    "name": "gameplan",
+    "productName": "SLP Gameplan",
+    "version": "1.0.1",
+    "description": "SLP Gameplan",
+    "main": "dist/index.js",
+    "scripts": {
+        "tscompile": "tsc",
+        "start": "tsc && electron-forge start",
+        "package": "tsc && electron-forge package",
+        "make": "electron-forge make",
+        "make-wix": "tsc && electron-forge make --targets @electron-forge/maker-wix",
+        "publish": "electron-forge publish",
+        "lint": "eslint --ext .ts .",
+        "test": "tsc"
+    },
+    "keywords": [],
+    "author": {
+        "name": "Jiang"
+    },
+    "config": {
+        "forge": "./forge.config.js"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.52",
+        "@electron-forge/maker-deb": "^6.0.0-beta.52",
+        "@electron-forge/maker-rpm": "^6.0.0-beta.52",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.52",
+        "@electron-forge/maker-wix": "^6.0.0-beta.52",
+        "@electron-forge/maker-zip": "^6.0.0-beta.52",
+        "@types/node": "^12.12.50",
+        "@typescript-eslint/eslint-plugin": "^2.34.0",
+        "@typescript-eslint/parser": "^2.34.0",
+        "electron": "9.1.0",
+        "eslint": "^6.8.0",
+        "eslint-plugin-import": "^2.22.0",
+        "typescript": "^3.9.6"
+    },
+    "dependencies": {
+        "@slippi/slippi-js": "^5.1.1",
+        "@vinceau/slp-realtime": "^3.1.0",
+        "electron-squirrel-startup": "^1.0.0",
+        "rxjs": "^6.6.3"
+    }
 }
