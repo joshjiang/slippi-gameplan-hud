@@ -1,6 +1,4 @@
-import { v4 as uuidv4 } from 'uuid'
 import { AbstractPlan } from './abstract-plan'
-import { Character } from './character'
 
 export class SimplePlan extends AbstractPlan {
     description: string
