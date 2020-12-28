@@ -3,10 +3,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { PlanSingle } from './components/PlanSingle';
+import { Header } from './components/Header';
+import { Container } from 'react-bootstrap';
+import { PlanNew } from './components/PlanNew';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Container>
+        <Header />
+        <Route path={"/"} exact render={(props) => {
+          return (<App />)
+        }} />
+        <Route exact path={"/new_plan"} render={(props) => {
+          return (<PlanNew />)
+        }} />
+        <Route path={"/:character/plan"} render={(props) => {
+          const character = props.match.params.character
+          return (character ? <PlanSingle character={character} /> : <>Character not found</>)
+        }} />
+      </Container>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
