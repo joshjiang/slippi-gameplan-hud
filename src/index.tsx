@@ -14,10 +14,10 @@ ReactDOM.render(
     <BrowserRouter>
       <Container>
         <Header />
-        <Route path={"/"} exact render={(props) => {
+        <Route path={"/"} exact render={() => {
           return (<App />)
         }} />
-        <Route exact path={"/new_plan"} render={(props) => {
+        <Route exact path={"/new_plan"} render={() => {
           return (<PlanNew />)
         }} />
         <Route path={"/:character/plan"} render={(props) => {
