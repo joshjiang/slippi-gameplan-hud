@@ -1,7 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
-import {
-    startSLP
-} from './services/slippi';
+import SlippiClient from './services/slippi';
 import * as path from 'path';
 
 let mainWindow: BrowserWindow;
@@ -22,7 +20,8 @@ const createWindow = () => {
 
 app.on('ready', () => {
     createWindow();
-    startSLP();
+    const client = new SlippiClient
+    client.startSLP();
 });
 
 ipcMain.on('osNotification', (event) => {

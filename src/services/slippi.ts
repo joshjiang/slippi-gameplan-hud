@@ -1,35 +1,39 @@
 import { SlpFolderStream, SlpRealTime } from '@vinceau/slp-realtime';
 import { Character } from '@slippi/slippi-js';
 
-const setPlayerPercent = (player, percent) => {
-    console.log(`player${player}Percent: ${percent}`);
-};
+export default class SlippiClient {
 
-export const startSLP = () => {
-    const folder = `C:/Users/Trace/Documents/Slippi`;
-    console.log(`Monitoring folder:`, folder);
+    setPlayerPercent = (player, percent) => {
+        console.log(`player${player}Percent: ${percent}`);
+    };
 
-    const stream = new SlpFolderStream();
-    const realtime = new SlpRealTime();
-    realtime.setStream(stream);
+    public startSLP = () => {
+        const folder = `C:/Users/User/Documents/Slippi`;
+        console.log(`Monitoring folder:`, folder);
 
-    // Get character
-    realtime.game.start$.subscribe((payload) => {
-        console.log(`Detected a new game in ${stream.latestFile()}`);
-        console.log(Character[payload.players[0].characterId])
-        console.log(Character[payload.players[1].characterId])
-    });
+        const stream = new SlpFolderStream();
+        const realtime = new SlpRealTime();
+        realtime.setStream(stream);
 
-    realtime.game.end$.subscribe((payload) => {
-        console.log(`Game ended in ${stream.latestFile()}`);
-    });
+        // Get character
+        realtime.game.start$.subscribe((payload) => {
+            console.log(`Detected a new game in ${stream.latestFile()}`);
+            console.log(Character[payload.players[0].characterId])
+            console.log(Character[payload.players[1].characterId])
+        });
 
-    realtime.stock.percentChange$.subscribe((payload) => {
-        const player = payload.playerIndex + 1;
-        console.log(`player ${player} percent: ${payload.percent}`);
-        setPlayerPercent(player, `${Math.floor(payload.percent)}%`);
-    });
+        realtime.game.end$.subscribe((payload) => {
+            console.log(`Game ended in ${stream.latestFile()}`);
+        });
 
-    // Start monitoring the folder for changes
-    stream.start(folder);
+        realtime.stock.percentChange$.subscribe((payload) => {
+            const player = payload.playerIndex + 1;
+            console.log(`player ${player} percent: ${payload.percent}`);
+            this.setPlayerPercent(player, `${Math.floor(payload.percent)}%`);
+        });
+
+        // Start monitoring the folder for changes
+        stream.start(folder);
+    }
+
 }
