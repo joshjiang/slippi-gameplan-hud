@@ -1,3 +1,1 @@
-export abstract class AbstractPlanFactory {
-
-}
+export abstract class AbstractPlanFactory {}

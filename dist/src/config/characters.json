@@ -1,108 +1,108 @@
 {
-    "Characters": [
-        {
-            "name": "Fox",
-            "updated": "-"
-        },
-        {
-            "name": "Falco",
-            "updated": "-"
-        },
-        {
-            "name": "Marth",
-            "updated": "-"
-        },
-        {
-            "name": "Sheik",
-            "updated": "-"
-        },
-        {
-            "name": "Jigglypuff",
-            "updated": "-"
-        },
-        {
-            "name": "Peach",
-            "updated": "-"
-        },
-        {
-            "name": "Ice Climbers",
-            "updated": "-"
-        },
-        {
-            "name": "Captain Falcon",
-            "updated": "-"
-        },
-        {
-            "name": "Pikachu",
-            "updated": "-"
-        },
-        {
-            "name": "Samus",
-            "updated": "-"
-        },
-        {
-            "name": "Dr. Mario",
-            "updated": "-"
-        },
-        {
-            "name": "Yoshi",
-            "updated": "-"
-        },
-        {
-            "name": "Luigi",
-            "updated": "-"
-        },
-        {
-            "name": "Ganondorf",
-            "updated": "-"
-        },
-        {
-            "name": "Mario",
-            "updated": "-"
-        },
-        {
-            "name": "Young Link",
-            "updated": "-"
-        },
-        {
-            "name": "Donkey Kong",
-            "updated": "-"
-        },
-        {
-            "name": "Link",
-            "updated": "-"
-        },
-        {
-            "name": "Mr. Game & Watch",
-            "updated": "-"
-        },
-        {
-            "name": "Roy",
-            "updated": "-"
-        },
-        {
-            "name": "Mewtwo",
-            "updated": "-"
-        },
-        {
-            "name": "Zelda",
-            "updated": "-"
-        },
-        {
-            "name": "Ness",
-            "updated": "-"
-        },
-        {
-            "name": "Pichu",
-            "updated": "-"
-        },
-        {
-            "name": "Bowser",
-            "updated": "-"
-        },
-        {
-            "name": "Kirby",
-            "updated": "-"
-        }
-    ]
+  "Characters": [
+    {
+      "name": "Fox",
+      "updated": "-"
+    },
+    {
+      "name": "Falco",
+      "updated": "-"
+    },
+    {
+      "name": "Marth",
+      "updated": "-"
+    },
+    {
+      "name": "Sheik",
+      "updated": "-"
+    },
+    {
+      "name": "Jigglypuff",
+      "updated": "-"
+    },
+    {
+      "name": "Peach",
+      "updated": "-"
+    },
+    {
+      "name": "Ice Climbers",
+      "updated": "-"
+    },
+    {
+      "name": "Captain Falcon",
+      "updated": "-"
+    },
+    {
+      "name": "Pikachu",
+      "updated": "-"
+    },
+    {
+      "name": "Samus",
+      "updated": "-"
+    },
+    {
+      "name": "Dr. Mario",
+      "updated": "-"
+    },
+    {
+      "name": "Yoshi",
+      "updated": "-"
+    },
+    {
+      "name": "Luigi",
+      "updated": "-"
+    },
+    {
+      "name": "Ganondorf",
+      "updated": "-"
+    },
+    {
+      "name": "Mario",
+      "updated": "-"
+    },
+    {
+      "name": "Young Link",
+      "updated": "-"
+    },
+    {
+      "name": "Donkey Kong",
+      "updated": "-"
+    },
+    {
+      "name": "Link",
+      "updated": "-"
+    },
+    {
+      "name": "Mr. Game & Watch",
+      "updated": "-"
+    },
+    {
+      "name": "Roy",
+      "updated": "-"
+    },
+    {
+      "name": "Mewtwo",
+      "updated": "-"
+    },
+    {
+      "name": "Zelda",
+      "updated": "-"
+    },
+    {
+      "name": "Ness",
+      "updated": "-"
+    },
+    {
+      "name": "Pichu",
+      "updated": "-"
+    },
+    {
+      "name": "Bowser",
+      "updated": "-"
+    },
+    {
+      "name": "Kirby",
+      "updated": "-"
+    }
+  ]
 }
