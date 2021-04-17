@@ -11,6 +11,7 @@ import { PlanNew } from "./components/PlanNew";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function render() {
+  const approot = document.getElementById('react-app');
   ReactDOM.render(
     <React.StrictMode>
       <HashRouter>

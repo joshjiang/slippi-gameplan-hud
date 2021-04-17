@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from "electron";
 import SlippiClient from "./services/slippi";
+import fs from 'fs';
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
@@ -18,9 +19,12 @@ const createWindow = (): void => {
 
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-
+ 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+  console.log(fs.readdirSync('/'))
+  const client = new SlippiClient();
+  client.startSLP();
 };
 
 // This method will be called when Electron has finished
@@ -38,12 +42,12 @@ app.on("window-all-closed", () => {
 });
 
 app.on("activate", () => {
+
+
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
-    const client = new SlippiClient();
-    client.startSLP();
   }
 });
 
