@@ -1,5 +1,5 @@
-import { SlpFolderStream, SlpRealTime } from "@vinceau/slp-realtime";
-import { Character } from "@slippi/slippi-js";
+import { SlpFolderStream, SlpRealTime } from '@vinceau/slp-realtime';
+import { Character } from '@slippi/slippi-js';
 
 export default class SlippiClient {
   setPlayerPercent = (player: any, percent: any) => {
@@ -7,8 +7,8 @@ export default class SlippiClient {
   };
 
   public startSLP = () => {
-    const folder = `C:/Users/User/Documents/Slippi`;
-    console.log(`Monitoring folder:`, folder);
+    const folder = 'C:/Users/User/Documents/Slippi';
+    console.log('Monitoring folder:', folder);
 
     const stream = new SlpFolderStream();
     const realtime = new SlpRealTime();
