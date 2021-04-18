@@ -1,6 +1,6 @@
 import { Button, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import characters from "../config/characters.json";
+import plans from "../db/plans.json";
 
 export function PlanList() {
   return (
@@ -25,13 +25,15 @@ export function PlanList() {
 
 function characterRows() {
   const rows = [] as any;
-  for (const i in characters.Characters) {
-    const character = characters.Characters[i];
+  for (const character in plans) {
     rows.push(
-      <Link to={`/${character.name}/plan`} key={character.name}>
+      <Link
+        to={{ pathname: `/${character}/plan`, state: { character: character } }}
+        key={character}
+      >
         <Row className="border-bottom align-center bg-light p-2">
-          <Col xs="4">{character.name}</Col>
-          <Col xs="4">{character.updated}</Col>
+          <Col xs="4">{character}</Col>
+          <Col xs="4">{plans[character].updated}</Col>
         </Row>
       </Link>
     );

@@ -1,20 +1,22 @@
 import { Col, Row } from "react-bootstrap";
 import { useLocation } from "react-router";
+import plans from "../db/plans.json";
 
 export function PlanSingle(props: any) {
   const location: any = useLocation();
-  if (location.state) {
+  if (location.state.character && plans[location.state.character].plan) {
     return (
       <div>
         <Row>
-          <Col md="12" className="border border-primary pt-1 pb-1">
+          <Col md="12" className="pt-1 pb-1">
             <h3>{location.state.character}</h3>
+            <hr></hr>
           </Col>
         </Row>
         <Row>
           <Col md="12">
             <h4>Notes</h4>
-            <p>{location.state.notes}</p>
+            <p>{plans[location.state.character].plan}</p>
           </Col>
         </Row>
       </div>

@@ -1,6 +1,6 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
+import { saveJson } from "./services/ipc";
 import SlippiClient from "./services/slippi";
-import fs from 'fs';
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
@@ -15,14 +15,19 @@ const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
   });
 
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
- 
+
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
-  console.log(fs.readdirSync('/'))
+
+  saveJson();
   const client = new SlippiClient();
   client.startSLP();
 };
@@ -42,8 +47,6 @@ app.on("window-all-closed", () => {
 });
 
 app.on("activate", () => {
-
-
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {

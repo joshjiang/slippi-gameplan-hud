@@ -3,6 +3,10 @@ module.exports = {
    * This is the main entry point for your application, it's the first file
    * that runs in the main process.
    */
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+  },
   entry: "./src/index.ts",
   // Put your normal webpack config below here
   module: {

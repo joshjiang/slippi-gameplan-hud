@@ -28,10 +28,9 @@
 
 import "./index.css";
 import "./app.tsx";
-const electron = require('electron')
-const ipc = electron.ipcRenderer
+const electron = require("electron");
+const ipc = electron.ipcRenderer;
 
 console.log(
   '👋 This message is being logged by "renderer.js", included via webpack'
 );
-

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
@@ -11,7 +11,6 @@ import { PlanNew } from "./components/PlanNew";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function render() {
-  const approot = document.getElementById('react-app');
   ReactDOM.render(
     <React.StrictMode>
       <HashRouter>

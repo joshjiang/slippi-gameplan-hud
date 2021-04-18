@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { ipcRenderer } from "electron";
 import { Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import c from "../config/characters.json";
+import c from "../db/characters.json";
 import { SimplePlanFactory } from "../lib/simple-plan-factory";
 
 export function PlanNew() {
   const [note, setNote] = useState("");
   const [character, setCharacter] = useState("Fox");
   const history = useHistory();
+
   function handleNoteUpdate(event: any) {
     setNote(event.target.value);
   }
@@ -20,6 +22,7 @@ export function PlanNew() {
       note,
       "Description"
     );
+
     alert("created plan for " + character);
     history.push({
       pathname: `/${character}/plan`,
@@ -29,6 +32,7 @@ export function PlanNew() {
         character: plan.character,
       },
     });
+    console.log(ipcRenderer.sendSync("json-file", note, character));
   }
   function getOptionsChars() {
     const chars: JSX.Element[] = [];
@@ -37,6 +41,7 @@ export function PlanNew() {
     });
     return chars;
   }
+
   return (
     <>
       <h4>New Plan</h4>
