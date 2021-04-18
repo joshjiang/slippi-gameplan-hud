@@ -1,7 +1,7 @@
 {
-  "name": "slp-gameplans",
-  "productName": "slp-gameplans",
-  "version": "1.0.0",
+  "name": "@jiango/slp-gameplans-hud",
+  "productName": "slp-gameplans-hud",
+  "version": "0.0.1",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
@@ -12,9 +12,21 @@
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts . --fix && npx prettier --write ."
   },
-  "keywords": [],
-  "author": "Name",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshjiang/slp-gameplan-hud.git"
+  },
+  "keywords": [
+    "slippi",
+    "melee"
+  ],
+  "author": "Josh Jiang",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshjiang/slp-gameplan-hud/issues"
+  },
+  "homepage": "https://github.com/joshjiang/slp-gameplan-hud#readme",
+  "private": true,
   "config": {
     "forge": {
       "packagerConfig": {},
