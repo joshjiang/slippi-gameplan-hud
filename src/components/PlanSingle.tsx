@@ -4,7 +4,7 @@ import plans from "../db/plans.json";
 
 export function PlanSingle(props: any) {
   const location: any = useLocation();
-  console.log("location state ---" + location.state)
+  console.log("location state ---" + location.state);
   if (location.state.character && plans[location.state.character].plan) {
     return (
       <div>
@@ -25,4 +25,4 @@ export function PlanSingle(props: any) {
   }
   return <h2>No plan yet!</h2>;
 }
-export default withRouter(PlanSingle)
+export default withRouter(PlanSingle);

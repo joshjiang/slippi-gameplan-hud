@@ -1,6 +1,5 @@
-
 const { SlpFolderStream, SlpRealTime } = require("@vinceau/slp-realtime");
-const {Character} = require("@slippi/slippi-js");
+const { Character } = require("@slippi/slippi-js");
 
 const slpLiveFolderPath = "/mnt/c/Users/User/Documents/Slippi";
 
@@ -18,8 +17,8 @@ realtime.setStream(stream);
 // Get character
 realtime.game.start$.subscribe((payload) => {
   console.log(`Detected a new game in ${stream.latestFile()}`);
-  console.log(Character[payload.players[0].characterId])
-  console.log(Character[payload.players[1].characterId])
+  console.log(Character[payload.players[0].characterId]);
+  console.log(Character[payload.players[1].characterId]);
 });
 
 realtime.stock.percentChange$.subscribe((payload) => {
@@ -27,8 +26,6 @@ realtime.stock.percentChange$.subscribe((payload) => {
   console.log(`player ${player} percent: ${payload.percent}`);
   setPlayerPercent(player, `${Math.floor(payload.percent)}%`);
 });
-
-
 
 // Start monitoring the folder for changes
 stream.start(slpLiveFolderPath);

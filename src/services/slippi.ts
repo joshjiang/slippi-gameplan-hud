@@ -1,7 +1,7 @@
-import { SlpFolderStream, SlpRealTime } from '@vinceau/slp-realtime';
-import { Character } from '@slippi/slippi-js';
+import { SlpFolderStream, SlpRealTime } from "@vinceau/slp-realtime";
+import { Character } from "@slippi/slippi-js";
 import { BrowserWindow } from "electron";
-import { sendCharacter } from './ipc';
+import { sendCharacter } from "./ipc";
 
 export default class SlippiClient {
   setPlayerPercent = (player: any, percent: any) => {
@@ -9,22 +9,22 @@ export default class SlippiClient {
   };
 
   public startSLP = () => {
-
-    const folder = 'C:/Users/User/Documents/Slippi';
-    console.log('Monitoring folder:', folder);
+    const folder = "C:/Users/User/Documents/Slippi";
+    console.log("Monitoring folder:", folder);
 
     const stream = new SlpFolderStream();
     const realtime = new SlpRealTime();
     realtime.setStream(stream);
 
-
     // Get character
     realtime.game.start$.subscribe((payload) => {
       const win = BrowserWindow.getFocusedWindow();
 
-      win!.webContents.send('asynchronous-message', { 'character': Character[payload.players[1].characterId!] });
+      win!.webContents.send("asynchronous-message", {
+        character: Character[payload.players[1].characterId!],
+      });
       console.log(`Detected a new game in ${stream.latestFile()}`);
-      console.log("player 1: " + Character[payload.players[0].characterId!]);
+      console.log(`player 1: ${Character[payload.players[0].characterId!]}`);
       console.log(Character[payload.players[1].characterId!]);
     });
 

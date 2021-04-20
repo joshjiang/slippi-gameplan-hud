@@ -8,18 +8,20 @@ export function PlanList() {
   const history = useHistory();
 
   useEffect(() => {
-    console.log("use effect yes!")
-    ipcRenderer.on('asynchronous-message', function (evt, message) {
-      console.log("!!! the message is :" + message.character)
+    console.log("use effect yes!");
+    ipcRenderer.on("asynchronous-message", function (evt, message) {
+      console.log("!!! the message is :" + message.character);
       try {
-        console.log(history)
-        history.push({ pathname: `/${message.character}/plan`, state: { character: message.character } })
-      }
-      catch (Error) {
-        console.log("shit broke in planlist : " + Error)
+        console.log(history);
+        history.push({
+          pathname: `/${message.character}/plan`,
+          state: { character: message.character },
+        });
+      } catch (Error) {
+        console.log("shit broke in planlist : " + Error);
       }
     });
-  })
+  });
 
   return (
     <>
@@ -46,7 +48,10 @@ function characterRows() {
   for (const character in plans) {
     rows.push(
       <Link
-        to={{ pathname: `/${character.toUpperCase()}/plan`, state: { character: character } }}
+        to={{
+          pathname: `/${character.toUpperCase()}/plan`,
+          state: { character: character },
+        }}
         key={character}
       >
         <Row className="border-bottom align-center bg-light p-2">
