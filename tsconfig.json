@@ -11,7 +11,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "module": "commonjs",
+    "module": "esnext",
     "noImplicitAny": false,
     "sourceMap": true,
     "baseUrl": ".",
@@ -23,7 +23,7 @@
     },
     "typeRoots": ["./node_modules/@types"],
     "types": ["node"],
-    "target": "es5"
+    "target": "es2017"
   },
   "include": ["src"]
 }

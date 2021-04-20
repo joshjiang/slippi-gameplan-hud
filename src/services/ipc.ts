@@ -1,4 +1,4 @@
-import { ipcMain } from 'electron';
+import { ipcMain, ipcRenderer } from 'electron';
 import fs from 'fs';
 import { join } from 'path';
 
@@ -34,4 +34,8 @@ export default function saveJson() {
       console.log(`Saving json failed: ${Error.message}`);
     }
   });
+}
+
+export function sendCharacter(character) {
+  ipcMain.on('game-start', character)
 }

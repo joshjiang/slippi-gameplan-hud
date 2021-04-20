@@ -1,8 +1,26 @@
+import { ipcRenderer } from "electron";
+import { useEffect } from "react";
 import { Button, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import plans from "../db/plans.json";
 
 export function PlanList() {
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log("use effect yes!")
+    ipcRenderer.on('asynchronous-message', function (evt, message) {
+      console.log("!!! the message is :" + message.character)
+      try {
+        console.log(history)
+        history.push({ pathname: `/${message.character}/plan`, state: { character: message.character } })
+      }
+      catch (Error) {
+        console.log("shit broke in planlist : " + Error)
+      }
+    });
+  })
+
   return (
     <>
       <Row>
@@ -28,7 +46,7 @@ function characterRows() {
   for (const character in plans) {
     rows.push(
       <Link
-        to={{ pathname: `/${character}/plan`, state: { character: character } }}
+        to={{ pathname: `/${character.toUpperCase()}/plan`, state: { character: character } }}
         key={character}
       >
         <Row className="border-bottom align-center bg-light p-2">
