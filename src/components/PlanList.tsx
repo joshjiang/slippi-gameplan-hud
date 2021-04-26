@@ -2,6 +2,7 @@ import { ipcRenderer } from "electron";
 import { useEffect } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { characters } from "@slippi/slippi-js";
 import plans from "../db/plans.json";
 
 export function PlanList() {
@@ -44,22 +45,23 @@ export function PlanList() {
 }
 
 function characterRows() {
-  const rows = [] as any;
-  for (const character in plans) {
+  const rows: JSX.Element[] = [];
+  characters.getAllCharacters().forEach(function (character) {
     rows.push(
       <Link
         to={{
-          pathname: `/${character.toUpperCase()}/plan`,
-          state: { character: character },
+          pathname: `/${character.name}/plan`,
+          state: { character: character.name },
         }}
-        key={character}
+        key={character.id}
       >
         <Row className="border-bottom align-center bg-light p-2">
-          <Col xs="4">{character}</Col>
-          <Col xs="4">{plans[character].updated}</Col>
+          <Col xs="4">{character.name}</Col>
+          <Col xs="4">{plans[character.name].updated}</Col>
         </Row>
       </Link>
-    );
-  }
+    )
+  });
+
   return rows;
 }

@@ -4,6 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import c from "../db/characters.json";
 import { SimplePlanFactory } from "../lib/simple-plan-factory";
+import { characters } from "@slippi/slippi-js";
 
 export function PlanNew() {
   const [note, setNote] = useState("");
@@ -17,29 +18,24 @@ export function PlanNew() {
     setCharacter(event.target.value);
   }
   function handleSubmit() {
-    const plan = new SimplePlanFactory().createSimplePlan(
-      character,
-      note,
-      "Description"
-    );
+    ipcRenderer.send("json-file", note, character);
 
     alert("created plan for " + character);
     history.push({
       pathname: `/${character}/plan`,
       state: {
-        id: plan.id,
-        notes: plan.notes,
-        character: plan.character,
+        notes: note,
+        character: character
       },
     });
-    console.log(ipcRenderer.sendSync("json-file", note, character));
+    console.log("history push successful!")
   }
   function getOptionsChars() {
-    const chars: JSX.Element[] = [];
-    c.Characters.forEach(function (char) {
-      chars.push(<option key={char.name}>{char.name}</option>);
+    const charactersOptions: JSX.Element[] = [];
+    characters.getAllCharacters().forEach(function (character) {
+      charactersOptions.push(<option key={character.name}>{character.name}</option>);
     });
-    return chars;
+    return charactersOptions;
   }
 
   return (
