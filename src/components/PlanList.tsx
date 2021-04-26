@@ -9,17 +9,14 @@ export function PlanList() {
   const history = useHistory();
 
   useEffect(() => {
-    console.log("use effect yes!");
-    ipcRenderer.on("asynchronous-message", function (evt, message) {
-      console.log("!!! the message is :" + message.character);
+    ipcRenderer.on("game-start", function (evt, message) {
       try {
-        console.log(history);
         history.push({
           pathname: `/${message.character}/plan`,
           state: { character: message.character },
         });
       } catch (Error) {
-        console.log("shit broke in planlist : " + Error);
+        console.log("planlist broken : " + Error);
       }
     });
   });
@@ -31,7 +28,9 @@ export function PlanList() {
           <Row>
             <Col xs="12" className="mb-2">
               <Link to="/new_plan">
-                <Button variant="success">+ Create Plan</Button>
+                <Button variant="success" className="btn-block">
+                  + Create Plan
+                </Button>
               </Link>
             </Col>
             <Col xs="4">Character</Col>
@@ -60,7 +59,7 @@ function characterRows() {
           <Col xs="4">{plans[character.name].updated}</Col>
         </Row>
       </Link>
-    )
+    );
   });
 
   return rows;

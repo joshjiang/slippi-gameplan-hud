@@ -3,7 +3,6 @@ import { ipcRenderer } from "electron";
 import { Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import c from "../db/characters.json";
-import { SimplePlanFactory } from "../lib/simple-plan-factory";
 import { characters } from "@slippi/slippi-js";
 
 export function PlanNew() {
@@ -20,20 +19,21 @@ export function PlanNew() {
   function handleSubmit() {
     ipcRenderer.send("json-file", note, character);
 
-    alert("created plan for " + character);
+    alert("Created plan for " + character);
     history.push({
       pathname: `/${character}/plan`,
       state: {
         notes: note,
-        character: character
+        character: character,
       },
     });
-    console.log("history push successful!")
   }
   function getOptionsChars() {
     const charactersOptions: JSX.Element[] = [];
     characters.getAllCharacters().forEach(function (character) {
-      charactersOptions.push(<option key={character.name}>{character.name}</option>);
+      charactersOptions.push(
+        <option key={character.name}>{character.name}</option>
+      );
     });
     return charactersOptions;
   }

@@ -1,4 +1,4 @@
-import { ipcMain, ipcRenderer } from "electron";
+import { ipcMain } from "electron";
 import fs from "fs";
 import { join } from "path";
 

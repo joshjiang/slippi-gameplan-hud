@@ -1,7 +1,6 @@
 import { SlpFolderStream, SlpRealTime } from "@vinceau/slp-realtime";
-import { Character } from "@slippi/slippi-js";
+import { characters } from "@slippi/slippi-js";
 import { BrowserWindow } from "electron";
-import { sendCharacter } from "./ipc";
 
 export default class SlippiClient {
   setPlayerPercent = (player: any, percent: any) => {
@@ -20,16 +19,16 @@ export default class SlippiClient {
     realtime.game.start$.subscribe((payload) => {
       const win = BrowserWindow.getFocusedWindow();
 
-      win!.webContents.send("asynchronous-message", {
-        character: Character[payload.players[1].characterId!],
+      win!.webContents.send("game-start", {
+        character: characters.getCharacterName(payload.players[1].characterId!),
       });
       console.log(`Detected a new game in ${stream.latestFile()}`);
-      console.log(`player 1: ${Character[payload.players[0].characterId!]}`);
-      console.log(Character[payload.players[1].characterId!]);
     });
 
     realtime.game.end$.subscribe((payload) => {
+      const win = BrowserWindow.getFocusedWindow();
       console.log(`Game ended in ${stream.latestFile()}`);
+      win!.webContents.send("game-end");
     });
 
     realtime.stock.percentChange$.subscribe((payload) => {
