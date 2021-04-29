@@ -1,27 +1,29 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "module": "commonjs",
-        "noImplicitAny": false,
-        "sourceMap": true,
-        "baseUrl": ".",
-        "outDir": "dist",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "paths": {
-            "*": [
-                "node_modules/*"
-            ]
-        },
-        "typeRoots": [
-            "./node_modules/@types"
-        ],
-        "types": [
-            "node"
-        ],
-        "target": "es5"
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "paths": {
+      "*": ["node_modules/*"]
     },
-    "include": [
-        "src/**/*"
-    ]
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node"],
+    "target": "es2017"
+  },
+  "include": ["src"]
 }
