@@ -28,6 +28,7 @@ export function PlanNew() {
       },
     });
   }
+
   function getOptionsChars() {
     const charactersOptions: JSX.Element[] = [];
     characters.getAllCharacters().forEach(function (character) {
@@ -48,20 +49,50 @@ export function PlanNew() {
             as="select"
             defaultValue={character}
             onChange={handleCharacterUpdate}
+            className="mb-2"
           >
             {getOptionsChars()}
           </Form.Control>
+          <PlanPercentBased />
           <Form.Label>Notes</Form.Label>
           <Form.Control
             as="textarea"
-            rows={10}
+            rows={5}
             className="mb-4"
             value={note}
             onChange={handleNoteUpdate}
           />
-          <Button onClick={handleSubmit}>Save</Button>
+          <Button className="bg-success" onClick={handleSubmit}>Save</Button>
         </Form.Group>
       </Form>
     </>
   );
+}
+
+function PlanPercentBased() {
+  const [noteForm, setNoteForm] = useState(<></>);
+
+  function addPercentPlan(event: any) {
+    setNoteForm(
+      <>
+        <Form.Label>Percent-Based Plan Notes</Form.Label>
+        <Form.Control
+          as="select" >
+          <option>Is Jigglypuff at Fox upsmash kill percent?</option>
+          <option>Custom plan</option>
+        </Form.Control>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          className="mb-4"
+        />
+      </>
+    )
+  }
+
+  return <>
+    <Button onClick={addPercentPlan} className="btn-sm" >+ Create Percent-Based Plan</Button>
+    <br />
+    {noteForm}
+  </>
 }
