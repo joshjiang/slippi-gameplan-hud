@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { characters } from "@slippi/slippi-js";
 import useForm from './forms/planNewHooks'
+import validate from "./forms/validate";
 
 export function PlanNew() {
-  const { inputs, handleInputChange, handleSubmit } = useForm({ note: "", character: "Fox" });
+  const { inputs, handleInputChange, handleSubmit, errors } = useForm({ note: "", character: "Fox" }, validate);
 
   function getOptionsChars() {
     const charactersOptions: JSX.Element[] = [];
@@ -43,6 +44,7 @@ export function PlanNew() {
             required={true}
             name="note"
           />
+          {errors.email && <p>errors.email</p>}
           <Button className="bg-success" onClick={handleSubmit}>Save</Button>
         </Form.Group>
       </Form>

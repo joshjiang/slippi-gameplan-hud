@@ -22,7 +22,6 @@ function formatJson(note: string, character: string) {
 
 export default function saveJson() {
   ipcMain.on("json-file", (event, note: string, character: string) => {
-    console.log("json file yes")
     try {
       const json = formatJson(note, character);
       fs.writeFileSync(
