@@ -7,7 +7,7 @@ import plans from "../db/plans.json";
 export function PlanSingle(props: any) {
   const location: any = useLocation();
   const history = useHistory();
-
+  console.log(plans[props.character].plan)
   useEffect(() => {
     ipcRenderer.on("game-end", function (evt, message) {
       try {
@@ -19,13 +19,11 @@ export function PlanSingle(props: any) {
       }
     });
   });
-
-  console.log(plans[location.state.character].plan);
-  if (typeof plans[location.state.character].plan === "undefined") {
+  if (typeof props.character == "undefined") {
     return (
       <Row>
         <Col md="12" className="pt-1 pb-1">
-          <h3>{location.state.character}</h3>
+          <h3>{props.character}</h3>
           <hr></hr>
           <Button className="bg-warning btn-block">No plan yet</Button>
         </Col>
@@ -36,13 +34,13 @@ export function PlanSingle(props: any) {
     <div>
       <Row>
         <Col md="12" className="pt-1 pb-1">
-          <h3>{location.state.character}</h3>
+          <h3>{props.character}</h3>
           <hr></hr>
         </Col>
       </Row>
       <Row>
         <Col md="12">
-          <p>{plans[location.state.character].plan}</p>
+          <p>{plans[props.character].plan}</p>
         </Col>
       </Row>
     </div>

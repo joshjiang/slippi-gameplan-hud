@@ -22,6 +22,7 @@ function formatJson(note: string, character: string) {
 
 export default function saveJson() {
   ipcMain.on("json-file", (event, note: string, character: string) => {
+    console.log("json file yes")
     try {
       const json = formatJson(note, character);
       fs.writeFileSync(
@@ -29,7 +30,7 @@ export default function saveJson() {
         JSON.stringify(json),
         "utf-8"
       );
-      // event.returnValue = 'Saved file';
+      event.returnValue = 'Saved file'
     } catch (Error) {
       console.log(`Saving json failed: ${Error.message}`);
     }

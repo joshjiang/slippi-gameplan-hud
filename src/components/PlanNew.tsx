@@ -1,33 +1,10 @@
 import { useState } from "react";
-import { ipcRenderer } from "electron";
-import { Button, Form } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
-import c from "../db/characters.json";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { characters } from "@slippi/slippi-js";
+import useForm from './forms/planNewHooks'
 
 export function PlanNew() {
-  const [note, setNote] = useState("");
-  const [character, setCharacter] = useState("Fox");
-  const history = useHistory();
-
-  function handleNoteUpdate(event: any) {
-    setNote(event.target.value);
-  }
-  function handleCharacterUpdate(event: any) {
-    setCharacter(event.target.value);
-  }
-  function handleSubmit() {
-    ipcRenderer.send("json-file", note, character);
-
-    alert("Created plan for " + character);
-    history.push({
-      pathname: `/${character}/plan`,
-      state: {
-        notes: note,
-        character: character,
-      },
-    });
-  }
+  const { inputs, handleInputChange, handleSubmit } = useForm({ note: "", character: "Fox" });
 
   function getOptionsChars() {
     const charactersOptions: JSX.Element[] = [];
@@ -47,20 +24,24 @@ export function PlanNew() {
           <Form.Label>Character</Form.Label>
           <Form.Control
             as="select"
-            defaultValue={character}
-            onChange={handleCharacterUpdate}
+            defaultValue={inputs.character}
+            onChange={handleInputChange}
             className="mb-2"
+            required={true}
+            name="character"
           >
             {getOptionsChars()}
           </Form.Control>
-          <PlanPercentBased />
+          <PlanPercentBased character={inputs.character} />
           <Form.Label>Notes</Form.Label>
           <Form.Control
             as="textarea"
             rows={5}
             className="mb-4"
-            value={note}
-            onChange={handleNoteUpdate}
+            defaultValue={inputs.note}
+            onChange={handleInputChange}
+            required={true}
+            name="note"
           />
           <Button className="bg-success" onClick={handleSubmit}>Save</Button>
         </Form.Group>
@@ -69,18 +50,28 @@ export function PlanNew() {
   );
 }
 
-function PlanPercentBased() {
+function PlanPercentBased(props) {
   const [noteForm, setNoteForm] = useState(<></>);
 
   function addPercentPlan(event: any) {
     setNoteForm(
       <>
         <Form.Label>Percent-Based Plan Notes</Form.Label>
-        <Form.Control
-          as="select" >
-          <option>Is Jigglypuff at Fox upsmash kill percent?</option>
-          <option>Custom plan</option>
-        </Form.Control>
+        <Row className="border m-1">
+          <Col xs="5">Notify me when {props.character}'s percent</Col>
+          <Col xs="3">
+            <Form.Control
+              as="select" className="p-1">
+              <option>{`>`}</option>
+              <option>{`<`}</option>
+            </Form.Control>
+          </Col>
+          <Col xs="3" >
+            <Form.Control
+              as="input"
+            ></Form.Control>
+          </Col>
+        </Row>
         <Form.Control
           as="textarea"
           rows={3}
@@ -91,7 +82,7 @@ function PlanPercentBased() {
   }
 
   return <>
-    <Button onClick={addPercentPlan} className="btn-sm" >+ Create Percent-Based Plan</Button>
+    <Button onClick={addPercentPlan} className="btn-sm" >+ Add Percent-Based Notifaction</Button>
     <br />
     {noteForm}
   </>
